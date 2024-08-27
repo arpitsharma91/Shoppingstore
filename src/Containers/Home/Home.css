@@ -1,0 +1,36 @@
+.Homeouter {
+  background: url("../../assets/images/backgrimage.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 500px;
+  position: relative;
+}
+.Homeoverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(9, 9, 9, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.ReviewOuter {
+  margin: 2em;
+  text-align: center;
+  font-weight: 200;
+  font-style: italic;
+  color: grey;
+}
+
+.ReviewInner {
+  margin: 0.5em;
+  text-align: center;
+  font-weight: 400;
+  color: grey;
+}

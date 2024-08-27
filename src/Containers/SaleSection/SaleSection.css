@@ -1,0 +1,13 @@
+.AllItemsOuter {
+  margin: 2em;
+  color: grey;
+}
+.AllItemsHeader {
+  margin: 2em;
+  text-align: center;
+}
+.AllItemsWrapper {
+  margin: 2em;
+  min-height: 500px;
+  font-weight: 200;
+}

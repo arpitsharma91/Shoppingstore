@@ -1,0 +1,1 @@
+state - auth, userdetails, useraccountdetails- name, adress, number, orders, ,categories - subcategories -- nested, companies, products, price                             , admin- name, id, password, dashboard, modifications(optional)
