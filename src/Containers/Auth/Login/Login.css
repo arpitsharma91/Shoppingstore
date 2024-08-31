@@ -1,0 +1,25 @@
+.LoginOuter {
+  margin: 5em 20em;
+}
+
+.LoginForm {
+  margin: 2em 1em;
+  text-align: center;
+}
+
+.LoginBottom {
+  margin: 1em;
+  text-align: center;
+}
+
+.LoginBottomButton {
+  margin-left: 1em;
+  margin-bottom: 0.5em;
+  padding: 0em;
+}
+
+@media (max-width: 1000px) {
+  .LoginOuter {
+    margin: 5em;
+  }
+}

@@ -3,13 +3,12 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-import Navigation from "../Navigation/Navigation";
-import Footer from "../Footer/Footer";
 import React, { useState, useContext } from "react";
-import UserContext from "../../UserContext";
+import UserContext from "../../shared/Context/UserContext";
 import Ordersummarymodal from "../Ordersummarymodal/Ordersummarymodal";
 import { useParams } from "react-router-dom";
-import { acData, machineData, tvData } from "../../utility";
+import { acData, machineData, tvData } from "../../shared/mockData/mockData";
+import "./ProductDetail.css";
 import { Link } from "react-router-dom";
 
 function Productdetail() {
@@ -42,13 +41,12 @@ function Productdetail() {
   };
   return (
     <React.Fragment>
-      <Navigation />
-      <div style={{ padding: "2em", backgroundColor: "#f1f1f1" }}>
-        <Card style={{ width: "45rem", margin: "auto" }}>
+      <div className="ProductDetailOuter">
+        <Card className="ProductDetailInner">
           <Card.Img
             variant="top"
             src={thisProduct.image}
-            style={{ maxHeight: "300px" }}
+            className="ProductDetailImage"
           />
           <Card.Body>
             <Card.Title>{thisProduct.brand}</Card.Title>
@@ -74,33 +72,20 @@ function Productdetail() {
 
             <ButtonToolbar
               aria-label="Toolbar with button groups"
-              style={{ marginTop: "20px" }}
+              className="ProductDetailToolbar"
             >
               <ButtonGroup style={{ margin: "auto" }}>
                 <Button onClick={quantitydecrementHandler}>-</Button>
-                <Button style={{ marginLeft: "1px", marginRight: "2px" }}>
-                  {quantity}
-                </Button>{" "}
+                <span className="ProductDetailQuantity">{quantity}</span>
+
                 <Button onClick={quantityincrementHandler}>+</Button>
               </ButtonGroup>
             </ButtonToolbar>
-            <Card.Title
-              style={{
-                marginTop: "1em",
-                textAlign: "center",
-                fontWeight: "normal",
-              }}
-            >
+            <Card.Title className="ProductDetailPrice mt-2">
               Price - {finalprice} /-
             </Card.Title>
 
-            <div
-              style={{
-                marginTop: "3em",
-                display: "flex",
-                justifyContent: "space-around",
-              }}
-            >
+            <div className="ProductDetailBottom">
               <Button variant="primary" onClick={() => setModalShow(true)}>
                 Buy Now
               </Button>
@@ -119,7 +104,6 @@ function Productdetail() {
           </Card.Body>
         </Card>
       </div>
-      <Footer />
     </React.Fragment>
   );
 }

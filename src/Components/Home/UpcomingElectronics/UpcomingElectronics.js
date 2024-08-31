@@ -1,9 +1,9 @@
 import Carousel from "react-bootstrap/Carousel";
 import Image from "react-bootstrap/Image";
-import CarouselImage1 from "../../assets/images/ElectronicsRefrigerators.jpg";
-import CarouselImage2 from "../../assets/images/electronicsmobile.jpg";
-import CarouselImage3 from "../../assets/images/laptop-5673901_1280.jpg";
-import "../Home/Home.css";
+import CarouselImage1 from "../../../assets/images/ElectronicsRefrigerators.jpg";
+import CarouselImage2 from "../../../assets/images/electronicsmobile.jpg";
+import CarouselImage3 from "../../../assets/images/laptop-5673901_1280.jpg";
+import "../Home.css";
 
 function Upcomingelectronics() {
   return (

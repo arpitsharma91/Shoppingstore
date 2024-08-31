@@ -1,0 +1,20 @@
+.UserDashboardOuter {
+  padding: 5em;
+  background-color: #333333;
+}
+
+.UserDashboardInner {
+  color: #ffffff;
+  text-align: center;
+}
+.UserDashboardTab {
+  background-color: #f3f3f3;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.Cart {
+  background-color: #f3f3f3;
+  text-align: center;
+  margin-bottom: 20px;
+}

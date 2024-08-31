@@ -1,29 +1,21 @@
-import { React, useContext, useEffect } from "react";
-import UserContext from "../../UserContext";
+import { React } from "react";
 import { useNavigate } from "react-router-dom";
-import Navigation from "../Navigation/Navigation";
-import Footer from "../Footer/Footer";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { acData, machineData, tvData } from "../../utility";
-import "../SaleSection/SaleSection.css";
+import * as mockData from "../../shared/mockData/mockData";
+import "./Electronics.css";
 import Electroniclist from "../Electroniclist/Electroniclist";
 function Electronics() {
-  const user = useContext(UserContext);
-  useEffect(() => {
-    user.checkAuthState();
-  }, []);
   let navigate = useNavigate();
-  const slicedacData = acData.slice(0, 3);
-  const slicedtvData = tvData.slice(0, 3);
-  const slicedmachineData = machineData.slice(0, 3);
+  const slicedacData = mockData.acData.slice(0, 3);
+  const slicedtvData = mockData.tvData.slice(0, 3);
+  const slicedmachineData = mockData.machineData.slice(0, 3);
 
   return (
     <div>
-      <Navigation />
-      <div className="AllItemsOuter">
-        <h1 className="AllItemsHeader">AirConditioners</h1>
+      <div className="ElectronicsOuter">
+        <h1 className="ElectronicsHeader">AirConditioners</h1>
         <Container fluid>
           <Row>
             {slicedacData.map((ac) => {
@@ -31,7 +23,7 @@ function Electronics() {
             })}
           </Row>
         </Container>
-        <div style={{ textAlign: "center", marginBottom: "4em" }}>
+        <div className="ElectronicsButton">
           <Button
             variant="primary"
             size="lg"
@@ -43,7 +35,7 @@ function Electronics() {
           </Button>
         </div>
         <hr />
-        <h1 className="AllItemsHeader">Televisions</h1>
+        <h1 className="ElectronicsHeader">Televisions</h1>
         <Container fluid>
           <Row>
             {slicedtvData.map((tv) => {
@@ -51,7 +43,7 @@ function Electronics() {
             })}
           </Row>
         </Container>
-        <div style={{ textAlign: "center", marginBottom: "4em" }}>
+        <div className="ElectronicsButton">
           <Button
             variant="primary"
             size="lg"
@@ -63,7 +55,7 @@ function Electronics() {
           </Button>
         </div>
         <hr />
-        <h1 className="AllItemsHeader">Washing Machines</h1>
+        <h1 className="ElectronicsHeader">Washing Machines</h1>
         <Container fluid>
           <Row>
             {slicedmachineData.map((machine) => {
@@ -73,7 +65,7 @@ function Electronics() {
             })}
           </Row>
         </Container>
-        <div style={{ textAlign: "center", marginBottom: "4em" }}>
+        <div className="ElectronicsButton">
           <Button
             variant="primary"
             size="lg"
@@ -85,7 +77,6 @@ function Electronics() {
           </Button>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

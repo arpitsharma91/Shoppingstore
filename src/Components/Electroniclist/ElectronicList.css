@@ -1,0 +1,10 @@
+.ElecItemsButton {
+  display: flex;
+  justify-content: space-between;
+}
+.ElecItemsWrapper {
+  width: 18rem;
+  margin: 2em;
+  min-height: 500px;
+  font-weight: 200;
+}

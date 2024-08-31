@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import Home from "./Containers/Home/Home";
-import Electronics from "./Containers/Electronics/Electronics";
-import Television from "./Containers/ElectronicsTvList/ElectronicsTvList";
-import Washingmachine from "./Containers/ElectronicsMachineList/ElectronicsMachineList";
-import Airconditioners from "./Containers/ElectronicsAcList/ElectronicsAcList";
-import Allitems from "./Containers/Allitems/Allitems";
+import Navigation from "./Components/Navigation/Navigation";
+import Footer from "./Components/Footer/Footer";
+import Home from "./Components/Home/Home";
+import Electronics from "./Components/Electronics/Electronics";
+import Television from "./Components/ElectronicsTvList/ElectronicsTvList";
+import Washingmachine from "./Components/ElectronicsMachineList/ElectronicsMachineList";
+import Airconditioners from "./Components/ElectronicsAcList/ElectronicsAcList";
+import Allitems from "./Components/Allitems/Allitems";
 import Productdetail from "./Containers/ProductDetail/ProductDetail";
 import Login from "./Containers/Auth/Login/Login";
 import Signup from "./Containers/Auth/Signup/Signup";
-import Logout from "./Containers/Logout/Logout";
 import UserDashboard from "./Containers/UserDashboard/UserDashboard";
 import Cart from "./Containers/UserDashboard/Cart";
 import { Routes, Route } from "react-router-dom";
-import UserContext from "./UserContext";
+import UserContext from "./shared/Context/UserContext";
 
 function App() {
   const [authData, setAuthdata] = useState({
@@ -28,7 +29,10 @@ function App() {
     region: "",
     zipcode: "",
   });
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState({
+    price: 0,
+    product: { brand: null, text: null },
+  });
   const registeruserData = (data) => {
     setUserdata({
       name: data.regname,
@@ -77,6 +81,9 @@ function App() {
   const cartHandler = (product, price) => {
     setCart({ product: product, price: price });
   };
+  const cartRemoveHandler = () => {
+    setCart({ price: 0, product: { brand: null, text: null } });
+  };
   return (
     <UserContext.Provider
       value={{
@@ -89,8 +96,10 @@ function App() {
         checkAuthTimeout: checkAuthTimeout,
         cartHandler: cartHandler,
         cart: cart,
+        cartRemoveHandler: cartRemoveHandler,
       }}
     >
+      <Navigation />
       <Routes>
         <Route path="/" Component={Home} />
         <Route path="/electronics" Component={Electronics} />
@@ -100,11 +109,17 @@ function App() {
         <Route path="/allitems" Component={Allitems} />
         <Route path="/products/:productId" Component={Productdetail} />
         <Route path="/login" Component={Login} />
-        <Route path="/logout" Component={Logout} />
         <Route path="/signup" Component={Signup} />
-        <Route path="/userdashboard" Component={UserDashboard} />
-        <Route path="/userdashboard/cart" Component={Cart} />
+        {authData.token ? (
+          <React.Fragment>
+            <Route path="/userdashboard" Component={UserDashboard} />
+            <Route path="/userdashboard/cart" Component={Cart} />
+          </React.Fragment>
+        ) : (
+          <Route path="/" Component={Home} />
+        )}
       </Routes>
+      <Footer />
     </UserContext.Provider>
   );
 }

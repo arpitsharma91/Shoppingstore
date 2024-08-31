@@ -1,0 +1,12 @@
+.ElectronicsOuter {
+  margin: 2em;
+  color: grey;
+}
+.ElectronicsHeader {
+  margin: 2em;
+  text-align: center;
+}
+.ElectronicsButton {
+  text-align: center;
+  margin-bottom: 4em;
+}

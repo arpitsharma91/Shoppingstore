@@ -1,24 +1,16 @@
 import { React, useContext, useEffect } from "react";
-import UserContext from "../../UserContext";
-import Navigation from "../Navigation/Navigation";
-import Footer from "../Footer/Footer";
+import UserContext from "../../shared/Context/UserContext";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-
-import "../SaleSection/SaleSection.css";
-import { acData } from "../../utility";
+import "../Electronics/Electronics.css";
+import { acData } from "../../shared/mockData/mockData";
 import Electroniclist from "../Electroniclist/Electroniclist";
 
 function Airconditioners() {
-  const user = useContext(UserContext);
-  useEffect(() => {
-    user.checkAuthState();
-  }, []);
   return (
     <div>
-      <Navigation />
-      <div className="AllItemsOuter">
-        <h1 className="AllItemsHeader">AirConditioners</h1>
+      <div className="ElectronicsOuter">
+        <h1 className="ElectronicsHeader">AirConditioners</h1>
         <Container fluid>
           <Row>
             {acData.map((ac) => {
@@ -27,7 +19,6 @@ function Airconditioners() {
           </Row>
         </Container>
       </div>
-      <Footer />
     </div>
   );
 }

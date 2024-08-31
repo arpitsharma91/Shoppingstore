@@ -1,12 +1,13 @@
-import { useState, useContext } from "react";
-import UserContext from "../../../UserContext";
+import { useState, useContext, useEffect } from "react";
+import UserContext from "../../../shared/Context/UserContext";
+import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Navigation from "../../Navigation/Navigation";
-import Footer from "../../Footer/Footer";
 import React from "react";
 import Card from "react-bootstrap/Card";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import "./Login.css";
 function Login() {
   const [validated, setValidated] = useState(false);
   const [logindata, setLogindata] = useState({
@@ -16,6 +17,10 @@ function Login() {
   });
 
   const user = useContext(UserContext);
+  useEffect(() => {
+    user.checkAuthState();
+  }, []);
+  let navigate = useNavigate();
 
   const handleSubmit = (event) => {
     const form = event.currentTarget;
@@ -23,10 +28,6 @@ function Login() {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    setValidated(true);
-  };
-  const checkHandler = () => {
     console.log(logindata);
 
     axios
@@ -48,21 +49,18 @@ function Login() {
           response.data.localId
         );
         user.checkAuthTimeout(response.data.expiresIn);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
       });
+    setValidated(true);
   };
+
   return (
     <React.Fragment>
-      <Navigation />
-      <Card style={{ margin: "5em 20em" }}>
-        <Form
-          noValidate
-          validated={validated}
-          onSubmit={handleSubmit}
-          style={{ margin: " 3em 1em", textAlign: "center" }}
-        >
+      <Card className="LoginOuter">
+        <Form noValidate validated={validated} className="LoginForm">
           <Form.Group className="mb-5" controlId="formBasicEmail">
             <Form.Control
               type="email"
@@ -89,15 +87,19 @@ function Login() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="button" onClick={handleSubmit}>
             Submit
           </Button>
-          <Button type="button" onClick={checkHandler}>
-            chk
-          </Button>
         </Form>
+        <div className="LoginBottom">
+          <span>New User ??? </span>
+          <Link to="/signup">
+            <Button variant="link" className="LoginBottomButton">
+              SignUp
+            </Button>
+          </Link>
+        </div>
       </Card>
-      <Footer />
     </React.Fragment>
   );
 }

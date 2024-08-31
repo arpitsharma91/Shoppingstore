@@ -1,0 +1,9 @@
+.ModalHeader {
+  text-align: center;
+}
+
+.OrderSummaryButton {
+  margin: 3em;
+  display: flex;
+  justify-content: space-around;
+}

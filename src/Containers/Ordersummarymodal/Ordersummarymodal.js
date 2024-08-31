@@ -1,7 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useState, useContext } from "react";
-import UserContext from "../../UserContext";
+import UserContext from "../../shared/Context/UserContext";
+import "./Ordersummarymodal.css";
 
 function Ordersummarymodal(props) {
   const user = useContext(UserContext);
@@ -22,13 +23,10 @@ function Ordersummarymodal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      style={{ textAlign: "center" }}
+      className="ModalHeader"
     >
       <Modal.Header>
-        <Modal.Title
-          id="contained-modal-title-vcenter"
-          style={{ textAlign: "center" }}
-        >
+        <Modal.Title id="contained-modal-title-vcenter" className="ModalHeader">
           Your Order will be delivered soon, please check and confirm your final
           Order details
         </Modal.Title>
@@ -38,16 +36,15 @@ function Ordersummarymodal(props) {
         <p className="m-3">{props.finaldetail.text}</p>
         <p className="m-3"> Price - {props.finalprice} /-</p>
       </Modal.Body>
-      <Modal.Footer
-        style={{
-          marginTop: "3em",
-          display: "flex",
-          justifyContent: "space-around",
-        }}
-      >
-        <Button onClick={orderHandler}>Order</Button>
-        <Button onClick={props.onHide}>Cancel</Button>
-      </Modal.Footer>
+
+      <div className="OrderSummaryButton">
+        <Button variant="success" onClick={orderHandler}>
+          Order
+        </Button>
+        <Button variant="danger" onClick={props.onHide}>
+          Cancel
+        </Button>
+      </div>
     </Modal>
   );
 }

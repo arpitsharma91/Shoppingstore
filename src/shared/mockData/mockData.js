@@ -1,6 +1,7 @@
-import acImage from "./assets/images/eletronicsac.jpg";
-import machineImage from "./assets/images/electronicwasmachine.jpg";
-import tvImage from "./assets/images/electronicstv.jpg";
+import acImage from "../../assets/images/eletronicsac.jpg";
+import machineImage from "../../assets/images/electronicwasmachine.jpg";
+import tvImage from "../../assets/images/electronicstv.jpg";
+
 export const acData = [
   {
     key: "101",
@@ -78,7 +79,7 @@ export const acData = [
 
 export const machineData = [
   {
-    key: 201,
+    key: "201",
     brand: "IFB Front-Load 10 K.G.",
     image: machineImage, //image:"path"  will not work due to babel
     text: "Full-Automatic Compact Washer with Wheels, 1.6 cu. ft, 11 lbs capacity with 6 Wash Programs Washer",
@@ -86,7 +87,7 @@ export const machineData = [
     price: 40000,
   },
   {
-    key: 202,
+    key: "202",
     brand: "L.G. Top-Load 7 K.G.",
     image: machineImage,
     text: "Full-Automatic Compact Washer with Wheels, 1.6 cu. ft, 11 lbs capacity with 6 Wash Programs Washer",
@@ -94,7 +95,7 @@ export const machineData = [
     price: 30000,
   },
   {
-    key: 203,
+    key: "203",
     brand: "Samsung Front-Load 12 K.G.",
     image: machineImage,
     text: "Full-Automatic Compact Washer with Wheels, 1.6 cu. ft, 11 lbs capacity with 6 Wash Programs Washer",

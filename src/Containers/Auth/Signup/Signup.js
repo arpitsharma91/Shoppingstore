@@ -1,12 +1,12 @@
 import { useState, useContext } from "react";
-import UserContext from "../../../UserContext";
+import UserContext from "../../../shared/Context/UserContext";
+import { useNavigate } from "react-router";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
-import Navigation from "../../Navigation/Navigation";
-import Footer from "../../Footer/Footer";
 import React from "react";
 import Card from "react-bootstrap/Card";
+import "./Signup.css";
 
 function Signup(props) {
   const [validated, setValidated] = useState(false);
@@ -17,20 +17,16 @@ function Signup(props) {
   const [region, setRegion] = useState("");
   const [zipcode, setZipcode] = useState("");
   const user = useContext(UserContext);
+  let navigate = useNavigate();
   let formdata = {},
     signupdata = {};
 
-  const handleSubmit = (event) => {
+  const submitHandler = (event) => {
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
     }
-
-    setValidated(true);
-  };
-
-  const orderHandler = () => {
     formdata = {
       regname: name,
       regemail: email,
@@ -50,18 +46,18 @@ function Signup(props) {
       )
       .then((response) => {
         console.log(response);
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
       });
+    setValidated(true);
   };
 
   return (
     <React.Fragment>
-      <Navigation />
-
-      <Card style={{ margin: "5em ", padding: "2em", textAlign: "center" }}>
-        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+      <Card className="SignupOuter">
+        <Form noValidate validated={validated}>
           <Form.Group controlId="validationCustom01" className="mb-3">
             <Form.Control
               required
@@ -143,15 +139,11 @@ function Signup(props) {
               Please provide a valid zip.
             </Form.Control.Feedback>
           </Form.Group>
-
-          <Button type="submit">Submit form</Button>
-          <Button type="button" onClick={orderHandler}>
-            Order
+          <Button type="button" onClick={submitHandler}>
+            Submit
           </Button>
         </Form>
       </Card>
-
-      <Footer />
     </React.Fragment>
   );
 }

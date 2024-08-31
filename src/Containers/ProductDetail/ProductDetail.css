@@ -1,0 +1,32 @@
+.ProductDetailOuter {
+  padding: 2em;
+  background-color: #f1f1f1;
+}
+
+.ProductDetailInner {
+  width: 45rem;
+  margin: auto;
+}
+
+.ProductDetailBottom {
+  margin-top: 3em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ProductDetailPrice {
+  text-align: center;
+  font-weight: normal;
+}
+
+.ProductDetailQuantity {
+  padding: 10px 15px;
+}
+
+.ProductDetailToolbar {
+  margin-top: 20px;
+}
+
+.ProductDetailImage {
+  max-height: 300px;
+}

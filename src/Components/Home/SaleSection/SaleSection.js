@@ -1,13 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import acImage from "../../assets/images/eletronicsac.jpg";
-import tvImage from "../../assets/images/electronicstv.jpg";
-import machineImage from "../../assets/images/electronicwasmachine.jpg";
+import acImage from "../../../assets/images/eletronicsac.jpg";
+import tvImage from "../../../assets/images/electronicstv.jpg";
+import machineImage from "../../../assets/images/electronicwasmachine.jpg";
 import "./SaleSection.css";
-import Electroniclist from "../Electroniclist/Electroniclist";
+import Electroniclist from "../../Electroniclist/Electroniclist";
+
 function Sale() {
-  let saleData = [];
-  saleData = [
+  let saleData = [
     {
       key: "101",
       brand: "Daikin Dual Invertor A.C.",

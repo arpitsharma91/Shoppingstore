@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import "../SaleSection/SaleSection.css";
 import { Link } from "react-router-dom";
-import Ordersummarymodal from "../Ordersummarymodal/Ordersummarymodal";
+import Ordersummarymodal from "../../Containers/Ordersummarymodal/Ordersummarymodal";
+import "./ElectronicList.css";
 
 function Electroniclist(props) {
   const [modalShow, setModalShow] = useState(false);
   return (
     <Col>
-      <Card style={{ width: "18rem" }} className="AllItemsWrapper">
+      <Card className="ElecItemsWrapper">
         <Link to={`/products/${props.electronicdata.key}`}>
           <Card.Img variant="top" src={props.electronicdata.image} />
         </Link>
@@ -21,12 +21,7 @@ function Electroniclist(props) {
 
           <i className="fas fa-solid fa-star" style={{ color: "yellow" }}></i>
           <Card.Text>Price - {props.electronicdata.price} /- </Card.Text>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-          >
+          <div className="ElecItemsButton">
             <Button variant="primary" onClick={() => setModalShow(true)}>
               Buy Now
             </Button>
